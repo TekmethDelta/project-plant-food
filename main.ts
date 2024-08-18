@@ -30,6 +30,15 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     current_size = -1
     Change_sprite()
 })
+function MakeLevel () {
+    if (current_level == 0) {
+        tiles.setCurrentTilemap(tilemap`level4`)
+    } else if (current_level == 1) {
+        tiles.setCurrentTilemap(tilemap`level4`)
+    } else if (current_level == 2) {
+        tiles.setCurrentTilemap(tilemap`level4`)
+    }
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     current_size = 1
     Change_sprite()
@@ -38,11 +47,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     current_size = -1
     Change_sprite()
 })
+let current_level = 0
 let jump_vel = 0
 let current_size = 0
 let main_plant: Sprite = null
-let light2 = sprites.create(assets.image`Light-source`, SpriteKind.Food)
-let dark = sprites.create(assets.image`Dark-source`, SpriteKind.Enemy)
 main_plant = sprites.create(img`
     8 8 8 8 8 5 5 5 5 5 5 8 8 8 8 8 
     5 5 5 5 8 8 8 8 8 8 8 8 8 8 8 8 
@@ -61,8 +69,6 @@ main_plant = sprites.create(img`
     8 8 1 1 1 1 3 8 8 8 1 8 8 8 8 8 
     8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
     `, SpriteKind.Player)
-light2.setPosition(150, 91)
-dark.setPosition(10, 91)
 controller.moveSprite(main_plant, 100, 0)
 main_plant.ay = 200
 main_plant.setStayInScreen(true)
@@ -189,6 +195,6 @@ scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     `)
-tiles.setCurrentTilemap(tilemap`level2`)
 current_size = 0
 jump_vel = -150
+current_level = 0
